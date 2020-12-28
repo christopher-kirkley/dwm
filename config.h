@@ -76,6 +76,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_o,      spawn,          {.v = roficmd } },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("/home/ck/scripts/rofi_power.sh")},
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("/home/ck/scripts/rofi_wallpaper.sh")},
+	{ MODKEY,                       XK_s,      spawn,          SHCMD("/home/ck/scripts/rofi_spaces.sh")},
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
