@@ -9,26 +9,31 @@ static const char *mutevol[]     = { "/usr/bin/pactl", "set-sink-mute", "1", "to
 static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 5;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "FontAwesome:Regular:pixelsize=12:antialias:true" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "monospace:size=15", "FontAwesome:Regular:pixelsize=15:antialias:true" };
+static const char dmenufont[]       = "monospace:size=15";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+static const char col_silver[]      = "#C0C0C0";
+static const char col_white[]       = "#FFFFFF";
+static const char col_solar_cyan[]  = "#2aa198";
+static const char col_solar_red[]   = "#dc322f";
+static const char col_solar_magenta[] = "#d33682";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]  = { col_gray4, col_cyan,  col_solar_magenta /*border color*/  },
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "6", "7", "8", "" };
+static const char *tags[] = { "", "", "", "", "", "6", "7", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -36,15 +41,16 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1,            0,           -1 },
 	{ "Google-chrome", NULL,  NULL,       1,       0,           -1 },
 	{ "Slack",    NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Soffice",  NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "Foxit",    NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "okular",    NULL,       NULL,       1 << 2,       0,           -1 },
 	{ "Gnome-terminal", NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "urxvt",    NULL,      NULL,       1 << 4,       0,           -1 },
 	{ "Emacs",    NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "spotify",    NULL,       NULL,       1 << 7,       0,           -1 },
+	{ "Gimp",     NULL,       NULL,       1 << 6,            1,           -1 },
 };
 
 /* layout(s) */
@@ -84,6 +90,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("/home/ck/scripts/rofi_power.sh")},
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("/home/ck/scripts/rofi_wallpaper.sh")},
 	{ MODKEY,                       XK_s,      spawn,          SHCMD("/home/ck/scripts/rofi_spaces.sh")},
+	{ MODKEY,                       XK_c,      spawn,          SHCMD("/home/ck/scripts/todo_quick_capture.sh")},
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
